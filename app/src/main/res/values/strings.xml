@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PetNet</string>
+    <string name="search">Search Posts</string>
+    <string name="title_activity_pets">Your Pets</string>
+    <string name="title_activity_about_pet">About Pet</string>
+    <string name="title_activity_new_post">Add new Post</string>
+    <string name="title_activity_about_pet_post">Pet - Post</string>
+    <string name="title_activity_new_pet">New Pet</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+    <string name="title_activity_search">Search Posts</string>
+    <string name="title_activity_about_result">Post</string>
+</resources>
