@@ -24,7 +24,9 @@ import java.util.List;
 import pe.edu.upc.petnet2.PetnetApp;
 import pe.edu.upc.petnet2.R;
 import pe.edu.upc.petnet2.adapters.PetsAdapter;
+import pe.edu.upc.petnet2.adapters.ResultsAdapter;
 import pe.edu.upc.petnet2.models.Pet;
+import pe.edu.upc.petnet2.models.Result;
 import pe.edu.upc.petnet2.network.PetnetApi;
 
 import static pe.edu.upc.petnet2.R.id.petsRecyclerView;
@@ -33,9 +35,9 @@ public class SearchActivity extends AppCompatActivity {
     EditText animalChoiceEditText;
     Button  searchButton;
     RecyclerView petsSearchRecyclerView;
-    PetsAdapter petsAdapter;
+    ResultsAdapter resultsAdapter;
     RecyclerView.LayoutManager  petsLayoutManager;
-    List<Pet> pets;
+    List<Result> results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,11 @@ public class SearchActivity extends AppCompatActivity {
         searchButton = (Button) findViewById(R.id.searchButton);
         petsSearchRecyclerView = (RecyclerView) findViewById(R.id.petsSearchRecyclerView);
         petsLayoutManager = new LinearLayoutManager(this);
-        petsAdapter = new PetsAdapter();
-        pets = new ArrayList<>();
-        petsAdapter.setPets(pets);
+        resultsAdapter = new ResultsAdapter();
+        results = new ArrayList<>();
+        resultsAdapter.setResults(results);
         petsSearchRecyclerView.setLayoutManager(petsLayoutManager);
-        petsSearchRecyclerView.setAdapter(petsAdapter);
+        petsSearchRecyclerView.setAdapter(resultsAdapter);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,9 +78,9 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
 
-                        pets = Pet.build(response);
-                        petsAdapter.setPets(pets);
-                        petsAdapter.notifyDataSetChanged();
+                        results = Result.build(response);
+                        resultsAdapter.setResults(results);
+                        resultsAdapter.notifyDataSetChanged();
 
                     }
 
